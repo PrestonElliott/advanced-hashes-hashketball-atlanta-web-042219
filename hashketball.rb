@@ -69,3 +69,9 @@ end
 def big_shoe_rebounds
   biggest_shoe.fetch(:rebounds)
 end
+
+def most_points_scored
+  players = game_hash[:home][:players].merge(game_hash[:away][:players])
+  players.max_by {|player, stats| stats.(:points)}[1]
+  players.fetch(name)
+end
